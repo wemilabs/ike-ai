@@ -21,7 +21,7 @@ export function AuthForm() {
           await signIn.social(
             {
               provider: "google",
-              callbackURL: "/",
+              callbackURL: "/dashboard",
               errorCallbackURL: "/error",
             },
 

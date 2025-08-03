@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/sidebar";
 import { ModeToggle } from "@/components/layout/mode-toggle";
 
-export default function Page() {
+export default function Dashboard() {
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -41,7 +41,6 @@ export default function Page() {
               </BreadcrumbList>
             </Breadcrumb>
           </div>
-
           <ModeToggle />
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">

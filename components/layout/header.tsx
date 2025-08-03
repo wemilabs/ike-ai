@@ -102,7 +102,7 @@ export const Header = () => {
                   size="sm"
                   className={cn(isScrolled && "lg:hidden")}
                 >
-                  <Link href="#">
+                  <Link href="/dashboard">
                     <span>Login</span>
                   </Link>
                 </Button>
@@ -111,7 +111,7 @@ export const Header = () => {
                   size="sm"
                   className={cn(isScrolled && "lg:hidden")}
                 >
-                  <Link href="#">
+                  <Link href="/dashboard">
                     <span>Sign Up</span>
                   </Link>
                 </Button>
@@ -120,7 +120,7 @@ export const Header = () => {
                   size="sm"
                   className={cn(isScrolled ? "lg:inline-flex" : "hidden")}
                 >
-                  <Link href="#">
+                  <Link href="/dashboard">
                     <span>Get Started</span>
                   </Link>
                 </Button>
