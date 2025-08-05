@@ -12,7 +12,7 @@ export function ModeToggle({ className }: { className?: string }) {
   return (
     <Button
       variant="outline"
-      size="icon"
+      size="sm"
       className={cn(
         "border-none shadow-none bg-transparent hover:bg-muted",
         className

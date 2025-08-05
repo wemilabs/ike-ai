@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-import { AuthForm } from "@/components/forms/auth-form";
+import { UserAuthForm } from "@/components/forms/user-auth-form";
 import { Logo } from "@/components/layout/logo";
 
 import {
@@ -29,19 +29,19 @@ export default function SignInModal() {
             automatically created for you.
           </DialogDescription>
         </DialogHeader>
-        <AuthForm />
+        <UserAuthForm />
         <DialogFooter className="text-center">
           <p className="px-8 sm:px-0 text-center text-xs text-muted-foreground">
             By continuing, you agree to our{" "}
             <Link
-              href="/legal/terms-of-service"
+              href="/legal/terms"
               className="underline underline-offset-4 hover:text-primary"
             >
               Terms of Service
             </Link>{" "}
             and{" "}
             <Link
-              href="/legal/privacy-policy"
+              href="/legal/privacy"
               className="underline underline-offset-4 hover:text-primary"
             >
               Privacy Policy
