@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ElementType } from "react";
 import { ChevronsUpDown, Plus } from "lucide-react";
 
 import {
@@ -24,7 +24,7 @@ export function TeamSwitcher({
 }: {
   teams: {
     name: string;
-    logo: React.ElementType;
+    logo: ElementType;
     plan: string;
   }[];
 }) {
