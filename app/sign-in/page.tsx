@@ -9,7 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { AuthForm } from "@/components/forms/auth-form";
+import { UserAuthForm } from "@/components/forms/user-auth-form";
 
 export const metadata: Metadata = {
   title: "Sign in • Ike AI",
@@ -25,20 +25,20 @@ export default function SignIn() {
           <CardDescription>Sign in below</CardDescription>
         </CardHeader>
         <CardContent>
-          <AuthForm />
+          <UserAuthForm />
         </CardContent>
         <CardFooter className="flex justify-end -mt-3">
           <p className="sm:px-0 px-8 text-center text-xs text-muted-foreground">
             By continuing, you agree to our{" "}
             <Link
-              href="/legal/terms-of-service"
+              href="/legal/terms"
               className="underline underline-offset-4 hover:text-primary"
             >
               Terms of Service
             </Link>{" "}
             and{" "}
             <Link
-              href="/legal/privacy-policy"
+              href="/legal/privacy"
               className="underline underline-offset-4 hover:text-primary"
             >
               Privacy Policy

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { unstable_ViewTransition as ViewTransition } from "react";
+
 import "./globals.css";
+import { Toaster } from "sonner";
 
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Ike AI • Real-time AI Teaching Platform",
@@ -25,8 +27,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {auth}
-          {children}
+          <ViewTransition>
+            {auth}
+            {children}
+          </ViewTransition>
           <Toaster richColors closeButton />
         </ThemeProvider>
       </body>

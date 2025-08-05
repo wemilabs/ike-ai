@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   BadgeCheck,
@@ -12,7 +13,19 @@ import {
 import { toast } from "sonner";
 
 import { signOut } from "@/lib/auth-client";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -45,22 +58,29 @@ export function NavUser({
     | undefined;
 }) {
   const { isMobile } = useSidebar();
+  const [isSigningOut, setIsSigningOut] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const router = useRouter();
 
   const handleSignOut = async () => {
     try {
+      setIsSigningOut(true);
       await signOut({
         fetchOptions: {
           onSuccess: () => {
             router.push("/");
-            toast.success("Successfully logged out");
+            toast.success("Successfully signed out. See you soon!");
+            setIsDialogOpen(false);
           },
         },
       });
     } catch (error) {
       console.error("Sign out error:", error);
       toast.error("Failed to sign out");
+      setIsDialogOpen(false);
+    } finally {
+      setIsSigningOut(false);
     }
   };
 
@@ -143,10 +163,33 @@ export function NavUser({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={handleSignOut}>
-              <LogOut />
-              Log out
-            </DropdownMenuItem>
+            <AlertDialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <AlertDialogTrigger className="flex items-center gap-2 py-1 text-left text-sm hover:bg-sidebar-accent w-full">
+                <LogOut className="size-4 ml-2 text-accent-foreground/70" />
+                Sign out
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    This action cannot be undone. It will sign you out of your
+                    account.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleSignOut();
+                    }}
+                    disabled={isSigningOut}
+                  >
+                    {isSigningOut ? "Signing out..." : "Continue"}
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>
