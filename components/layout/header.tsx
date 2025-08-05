@@ -43,12 +43,8 @@ export const Header = () => {
         >
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0">
             <div className="flex w-full justify-between lg:w-auto">
-              <Link
-                href="/"
-                aria-label="home"
-                className="flex items-center space-x-2"
-              >
-                <Logo />
+              <Link href="/" aria-label="home">
+                <Logo as="div" />
               </Link>
 
               <div className="flex items-center gap-x-3 lg:hidden">

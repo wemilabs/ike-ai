@@ -1,8 +1,16 @@
-export const Logo = () => {
+import { cn } from "@/lib/utils";
+
+export const Logo = ({
+  className,
+  as: Component = "div",
+}: {
+  className?: string;
+  as?: "h1" | "div" | "span";
+}) => {
   return (
-    <h1 className="text-xl font-semibold">
+    <Component className={cn("text-xl font-semibold", className)}>
       Ike
       <span className="text-primary dark:text-accent-foreground/55">.ai</span>
-    </h1>
+    </Component>
   );
 };
