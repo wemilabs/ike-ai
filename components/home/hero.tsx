@@ -1,10 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowRight, Check, ChevronRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { AnimatedGroup } from "@/components/ui/animated-group";
 import { TextEffect } from "@/components/ui/text-effect";
+import { Announcement } from "./announcement";
 
 const transitionVariants = {
   item: {
@@ -80,27 +81,7 @@ export const Hero = () => {
           <div className="mx-auto max-w-5xl px-6">
             <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
               <AnimatedGroup variants={transitionVariants}>
-                <Link
-                  href="#link"
-                  className="hover:bg-background dark:hover:border-t-border bg-muted group mx-auto flex w-fit items-center gap-4 rounded-full border p-1 pl-4 shadow-md shadow-zinc-950/5 transition-colors duration-300 dark:border-t-white/5 dark:shadow-zinc-950"
-                >
-                  <span className="text-foreground text-sm">
-                    {/* Introducing Support for AI Models */}
-                    Introducing <span className="font-semibold">Ike v0.1</span>
-                  </span>
-                  <span className="dark:border-background block h-4 w-0.5 border-l bg-white dark:bg-zinc-700"></span>
-
-                  <div className="bg-background group-hover:bg-muted size-6 overflow-hidden rounded-full duration-500">
-                    <div className="flex w-12 -translate-x-1/2 duration-500 ease-in-out group-hover:translate-x-0">
-                      <span className="flex size-6">
-                        <ArrowRight className="m-auto size-3" />
-                      </span>
-                      <span className="flex size-6">
-                        <ArrowRight className="m-auto size-3" />
-                      </span>
-                    </div>
-                  </div>
-                </Link>
+                <Announcement />
               </AnimatedGroup>
 
               <TextEffect
@@ -136,29 +117,52 @@ export const Hero = () => {
                   },
                   ...transitionVariants,
                 }}
-                className="mt-12 flex flex-col items-center justify-center gap-2 md:flex-row"
+                className="mt-12"
               >
-                <div
-                  key={1}
-                  className="bg-foreground/10 rounded-[calc(var(--radius-xl)+0.125rem)] border p-0.5"
-                >
-                  <Button asChild size="lg" className="rounded-xl px-5">
-                    <Link href="/dashboard">
-                      <span className="text-nowrap">Start Journeying</span>
+                <div className="flex flex-col items-center justify-center gap-2 sm:flex-row lg:hidden">
+                  <div
+                    key={1}
+                    className="bg-foreground/10 rounded-[calc(var(--radius-xl)+0.125rem)] border p-0.5"
+                  >
+                    <Button asChild size="lg" className="rounded-xl px-5">
+                      <Link href="/dashboard">
+                        <span className="text-nowrap">Start Journeying</span>
+                      </Link>
+                    </Button>
+                  </div>
+                  <Button
+                    key={2}
+                    asChild
+                    size="lg"
+                    variant="ghost"
+                    className="rounded-xl px-5"
+                  >
+                    <Link href="#link">
+                      <span className="text-nowrap">Request a demo</span>
                     </Link>
                   </Button>
                 </div>
-                <Button
-                  key={2}
-                  asChild
-                  size="lg"
-                  variant="ghost"
-                  className="rounded-xl px-5"
-                >
-                  <Link href="#link">
-                    <span className="text-nowrap">Request a demo</span>
-                  </Link>
-                </Button>
+
+                <div className="hidden lg:flex lg:items-center lg:justify-center lg:gap-3">
+                  <div className="flex items-center gap-1">
+                    <Check className="size-4 text-green-500" />
+                    <span className="text-sm text-muted-foreground">
+                      Real-time
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Check className="size-4 text-green-500" />
+                    <span className="text-sm text-muted-foreground">
+                      Customizable
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Check className="size-4 text-green-500" />
+                    <span className="text-sm text-muted-foreground">
+                      24/7 Support
+                    </span>
+                  </div>
+                </div>
               </AnimatedGroup>
             </div>
           </div>
